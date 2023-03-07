@@ -36,8 +36,8 @@ function Register() {
           navigate("/");
         }
       }
-    } catch (ex) {
-      console.log(ex);
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
