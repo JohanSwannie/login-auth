@@ -3,7 +3,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
-function Register() {
+
+const Register = () => {
   const [cookies] = useCookies(["cookie-name"]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -74,6 +75,6 @@ function Register() {
       <ToastContainer />
     </div>
   );
-}
+};
 
 export default Register;
