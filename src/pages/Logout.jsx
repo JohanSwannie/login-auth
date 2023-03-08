@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-export default function Logout() {
+const Logout = () => {
   const navigate = useNavigate();
   const [cookies, setCookies, removeCookie] = useCookies([]);
   useEffect(() => {
@@ -45,4 +45,6 @@ export default function Logout() {
       <ToastContainer />
     </>
   );
-}
+};
+
+export default Logout;
