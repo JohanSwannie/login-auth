@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 
-const Register = () => {
+export default function Register() {
   const [cookies] = useCookies(["cookie-name"]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -75,6 +75,4 @@ const Register = () => {
       <ToastContainer />
     </div>
   );
-};
-
-export default Register;
+}
