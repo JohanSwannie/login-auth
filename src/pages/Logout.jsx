@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
-const Logout = () => {
+export default function Logout() {
   const navigate = useNavigate();
-  const [cookies, setCookies, removeCookie] = useCookies([]);
+  const [cookies, removeCookie] = useCookies([]);
   useEffect(() => {
     const verifyUser = async () => {
       if (!cookies.jwt) {
@@ -19,14 +19,10 @@ const Logout = () => {
             withCredentials: true,
           }
         );
-        alert(data.status);
         if (!data.status) {
           removeCookie("jwt");
           navigate("/login");
-        } else
-          toast(`Hi ${data.user}`, {
-            theme: "dark",
-          });
+        }
       }
     };
     verifyUser();
@@ -34,17 +30,15 @@ const Logout = () => {
 
   const logOut = () => {
     removeCookie("jwt");
-    navigate("/register");
+    navigate("/login");
   };
   return (
     <>
-      <div className="private">
-        <h1>Logout Page</h1>
+      <div className="logoutPage">
+        <h2>Logout Page</h2>
         <button onClick={logOut}>Log out</button>
       </div>
       <ToastContainer />
     </>
   );
-};
-
-export default Logout;
+}
