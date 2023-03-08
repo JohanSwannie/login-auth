@@ -4,9 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 
-const Login = () => {
+export default function Login() {
   const [cookies] = useCookies([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (cookies.jwt) {
       navigate("/");
@@ -14,10 +15,12 @@ const Login = () => {
   }, [cookies, navigate]);
 
   const [values, setValues] = useState({ email: "", password: "" });
+
   const generateError = (error) =>
     toast.error(error, {
       position: "bottom-right",
     });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -41,6 +44,7 @@ const Login = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="container">
       <h2>Login to your Account</h2>
@@ -75,6 +79,4 @@ const Login = () => {
       <ToastContainer />
     </div>
   );
-};
-
-export default Login;
+}
